@@ -1,0 +1,81 @@
+body {
+	width: 100%;
+	margin: auto;
+	max-width: 800px;
+	display: flex; /* éléments flexible dans le corps de la page */
+}
+
+aside {
+	margin-left: -10%;
+	flex: 0 0 33%; /* largeur fixe à 33% */
+	max-width: 500px;
+	min-width : 150 px;
+	flex-shrink: 1;
+	flex-grow: 2;
+}
+
+article {
+	flex: 0 0 67%; /* largeur fixe à 67% */
+	max-width : 500px;
+	min-width : 200px;
+	flex-shrink: 3;
+	flex-grow: 1;
+}
+
+div1 {
+	width: 50%;
+	max-width : 400px;
+}
+
+div2 {
+	width: 50%;
+	flex-grow: 1;
+}
+
+@media(max-width: 768px) {	/*condition en CSS*/
+  table {
+    display: none;
+  }
+}   
+
+@media (max-width: 480px) {
+  body {
+    flex-direction: column;
+  }
+}
+
+#menu2 {
+  display: none; 
+  position: fixed;      
+  top: 0;               /* Aligné en haut de l’écran */
+  right: 0;             /* Aligné à droite de l’écran */
+  width: 80vw;          /* Occupe 80% de la largeur de la fenêtre */
+  height: 100vh;        /* Occupe 100% de la hauteur de la fenêtre */
+  background-color: white; /* Fond blanc pour le distinguer visuellement */
+  z-index: 10;          /* Au-dessus des autres éléments du site */
+  display: flex;        /* Active le modèle flexbox */
+  flex-direction: column; /* Dispose les liens verticalement */
+  align-items: center;  /* Centre les liens horizontalement */
+  justify-content: center; /* Centre les liens verticalement */
+}
+
+.burger {
+  position: absolute; /* Positionné par rapport à la fenêtre ou au conteneur parent */
+  top: 0;             /* Placé tout en haut */
+  right: 0;           /* Placé tout à droite */
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    display: none; /* Cache le menu principal sur smartphone */
+  }
+  
+  .burger {
+    display: block; /* Affiche le burger à la place du menu */
+  }
+}
+
+
+.burger:hover #menu2 {
+  display: flex; /* Faire apparaître le menu2 en mode flex */
+}

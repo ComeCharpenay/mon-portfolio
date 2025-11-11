@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset ="UTF-8">
+	<link href="">
+	<link href="">
+</head>
+
+<body>
+
+
+<form action="sendToMySecondYearInlut.php" method="post">
+
+	<fieldset>
+	<legend>Informations Personnelles :</legend>
+			<label for="surname">Nom*</label>
+			<input id="surname" name="uname" type="text" required>
+		<br>
+			<label for="name">Prénom*</label>
+			<input id="name" name="uname2" type="text" required>
+		<br>
+			<label for="email">Email*</label>
+			<input id="email" name="email" type="email" placeholder="yourmail@domain.com" required>
+		<br>
+			<label for="name">Sexe</label>
+		<br>
+			<input id="choix" name="sex" type="radio">
+			<label for="basique">Homme</label>
+		<br>
+			<input id="choix" name="sex" type="radio">
+			<label for="basique">Femme</label>
+		<br>
+			<label for="date">Date de naissance</label>
+			<input id="name" name="date" type="date">
+		<br>
+			<label for="pays">Pays d'origine</label>
+		<br>
+			<input id="choix" name="pays" type="radio">
+			<label for="usa">U.S.A</label>
+		<br>
+			<input id="choix" name="pays" type="radio" value="France" checked>
+			<label for="france">France</label>
+		<br>
+			<input id="choix" name="pays" type="radio">
+			<label for="chine">Chine</label>
+		<br>
+			<input id="choix" name="pays" type="radio">
+			<label for="vietnam">Viêt Nam</label>
+		<br>
+	</fieldset>
+	
+	<fieldset>
+	<legend>Les sports de combat :</legend>
+		<label for="artsmartiaux">Sport de combats préférées</label>
+	<br>
+		<input type="checkbox" id="arts" name="arts">
+		<label for="artsmartiaux">Kung Fu</label>
+	<br>
+		<input type="checkbox" id="arts" name="arts">
+		<label for="artsmartiaux">Karaté</label>
+	<br>
+		<input type="checkbox" id="arts" name="arts">
+		<label for="artsmartiaux">Full-Contact</label>
+	<br>
+		<label for="niveauK">Niveau en karaté</label>
+		<input id="number" name="number" type="number" min="0" max="5" step="1"/>
+	</fieldset>
+		
+	<fieldset>
+	<legend>Inscription :</legend>
+		<label for="message">Message pour Chuck</label>
+	<br>
+		<textarea placeholder="Un inscrit sera tiré au sort, et verra son message transmis à Chuck Norris."></textarea>
+	<br>
+		<label for="password">Mot de passe*</label>
+		<input id="password" name="password" type="password" minlength="8" pattern="[A-Za-z0-9]+" required>
+	<br>
+		<label for="clauses">J'ai bien lu les clauses que je n'ai pas lu*</label>
+		<input id="button" name="button" type="checkbox" required>
+	<br>
+		<label for="niveauE">Niveau d'engagements</label>
+	<br>
+		<input id="choix" name="engagement" type="radio">
+		<label for="basique">Basique (5 €)</label>
+	<br>
+		<input id="choix" name="engagement" type="radio">
+		<label for="gold">Gold (15 €)</label>
+	<br>
+		<input id="choix" name="engagement" type="radio">
+		<label for="tatane">Tatane in your face (50 €)</label>
+	<br>
+		
+	</fieldset>
+		
+	<input type="submit" value="Envoyer">
+		
+</form>
+
+
+
+
+
+</body>
+
+</html>
