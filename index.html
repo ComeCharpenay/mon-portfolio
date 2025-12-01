@@ -925,74 +925,155 @@ footer {
 <table class="custom-table">
 <thead>
 <tr>
-    <th>Outils utilisés</th>
+    <th>Outils utilisés / Thème</th>
     <th>Description des veilles</th>
     <th>Date</th>
     <th>Type de veille</th>
-    <th>Note complémentaire</th>
+    <th>Note / Complément</th>
 </tr>
 </thead>
 <tbody>
 
 <tr>
-<td>Articles techniques (NVIDIA, AMD)</td>
-<td>Évolution architectures 2024–2025 : NVIDIA Blackwell, AMD MI300X, Intel Ponte Vecchio. Nouveaux modèles multi-dies, mémoire HBM3e, interconnexion NVLink 5.0.</td>
-<td>14-10-2025</td>
-<td>Puce GPU / Architecture</td>
-<td>Dual GPU, bande passante extrême (jusqu’à 1,8 To/s).</td>
+<td>Intel – Ponte Vecchio</td>
+<td>Architecture multi-tile, gravure mixte 7/10 nm, jusqu’à 128 Go HBM2e</td>
+<td>15-06-2021</td>
+<td>Veille matérielle GPU</td>
+<td>Interconnexions EMIB + Foveros</td>
 </tr>
 
 <tr>
-<td>Rapports HPC / Data centers</td>
-<td>Innovations thermiques : refroidissement liquide direct, vapor chamber avancée, microcanaux.</td>
-<td>14-10-2025</td>
-<td>Refroidissement GPU</td>
-<td>DLC utilisé dans les supercalculateurs (Frontier, Jupiter).</td>
+<td>AMD – Instinct MI300X</td>
+<td>APU hybride CPU+GPU 3D, gravure 5/6 nm, 192 Go HBM3, architecture chipset 3D</td>
+<td>06-12-2023</td>
+<td>Veille matérielle GPU</td>
+<td>Très grande bande passante mémoire, 5,3 To/s :contentReference[oaicite:2]{index=2}</td>
 </tr>
 
 <tr>
-<td>Docs NVIDIA / AMD</td>
-<td>Interconnexions ultra-rapides : NVLink 5.0, Infinity Fabric 3, CXL 3.0, PCIe Gen6.</td>
-<td>14-10-2025</td>
-<td>Bande passante / Interconnexion</td>
-<td>Vers >128 Go/s bidirectionnel d’ici 2026.</td>
+<td>Refroidissement liquide direct (DLC)</td>
+<td>Refroidissement liquide direct 700–1000 W, utilisé en HPC (systèmes exascale type supercalculateurs)</td>
+<td>07-10-2024</td>
+<td>Veille thermique</td>
+<td>Permet densités extrêmes (~100 kW/rack) — basé sur études data-center HPC récentes :contentReference[oaicite:3]{index=3}</td>
 </tr>
 
 <tr>
-<td>Notes API (CUDA, Vulkan)</td>
-<td>CUDA 13 unifie CPU–GPU, HIP/SYCL deviennent multiplateforme, Vulkan 1.4 améliore le ray tracing.</td>
-<td>14-10-2025</td>
-<td>Software / API</td>
-<td>Meilleure portabilité des programmes GPU.</td>
+<td>Refroidissement – Vapor Chamber / micro-canaux</td>
+<td>Chambres à vapeur intégrées au die, meilleure gestion des hotspots thermiques</td>
+<td>15-11-2024</td>
+<td>Thermique / packaging</td>
+<td>NVIDIA B200 envisagé avec double vapor chamber — source interne / spéculation</td>
 </tr>
 
 <tr>
-<td>Fiches firmware</td>
-<td>GPU + IA embarquée : contrôle ventilateurs prédictif, DVFS intelligent, thermal learning.</td>
-<td>14-10-2025</td>
-<td>Gestion énergétique / IA</td>
-<td>Adaptation en temps réel charge ↔ température.</td>
+<td>Capteurs thermiques & monitoring GPU</td>
+<td>Capteurs sur HBM, VRM, SM → DVFS localisé, ajustement tension/fréquence en temps réel</td>
+<td>20-11-2024</td>
+<td>Veille hardware / monitoring</td>
+<td>Ajustement dynamique selon charge & température (source interne / spéculation)</td>
 </tr>
 
 <tr>
-<td>Documentation fabricants</td>
-<td>Capteurs intégrés : thermique, électrique, stress, EMI, optique interne.</td>
-<td>14-10-2025</td>
-<td>Surveillance / Capteurs</td>
-<td>Stabilité PCIe/NVLink et fiabilité améliorées.</td>
+<td>Interconnexion – NVLink 5.0</td>
+<td>1,8 To/s inter-GPU (x2 vs génération Hopper)</td>
+<td>05-12-2024</td>
+<td>Interconnexion</td>
+<td>Prévu sur architecture dual-GPU type Blackwell</td>
 </tr>
 
 <tr>
-<td>Roadmap GPU 2026–2027</td>
-<td>Projets futurs : NVIDIA Rubin, AMD MI400, Intel Falcon Shores, bus photonique.</td>
-<td>14-10-2025</td>
+<td>Interconnexion – Infinity Fabric 3</td>
+<td>~1,5 To/s inter-GPU / inter-dies</td>
+<td>12-12-2024</td>
+<td>Interconnexion</td>
+<td>Pour architecture multi-dies type MI300X (AMD)</td>
+</tr>
+
+<tr>
+<td>Interconnexion – CXL 3.0 (mémoire partagée CPU↔GPU)</td>
+<td>Standard mémoire partagée, latence réduite, flexibilité CPU-GPU</td>
+<td>22-02-2025</td>
+<td>Interconnexion</td>
+<td>Adoption industrielle envisagée — veille prospective</td>
+</tr>
+
+<tr>
+<td>Interconnexion – PCIe Gen6 / Gen7</td>
+<td>Jusqu’à 128 Go/s bidirectionnel, pour serveurs futurs</td>
+<td>10-05-2025</td>
+<td>Interconnexion</td>
+<td>Flexibilité bande passante pour data-centers & serveurs HPC</td>
+</tr>
+
+<tr>
+<td>Vulkan 1.4 / DirectX 12 Ultimate</td>
+<td>Meilleure gestion VRAM, rendu & compute unifiés, ray-tracing avancé, portabilité multi-GPU</td>
+<td>03-12-2024</td>
+<td>Veille API / logiciel</td>
+<td>Vulkan 1.4 officiellement publié — simplifie cross-platform GPU compute/graphique :contentReference[oaicite:10]{index=10}</td>
+</tr>
+
+<tr>
+<td>Compilation unifiée CPU–GPU (ex: CUDA 13)</td>
+<td>Compilation CPU–GPU pour architectures hybrides (ex : Grace-Blackwell), meilleure portabilité</td>
+<td>15-03-2025</td>
+<td>Veille logiciel</td>
+<td>Facilite développement multiplateforme (GPU + CPU) — veille prospective</td>
+</tr>
+
+<tr>
+<td>Schedulers matériels IA & IA embarquée (ex: “Predictive Fan Control”, DVFS dynamique)</td>
+<td>Ordonnanceurs autonomes, redistribution dynamique des workloads, gestion tension/fréquence, refroidissement adaptatif via IA</td>
+<td>27-04-2025</td>
+<td>Veille logiciel / Énergie / IA embarquée</td>
+<td>Optimisation énergétique & thermique en temps réel — veille prospective</td>
+</tr>
+
+<tr>
+<td>NVIDIA – Blackwell (B200 / GB200)</td>
+<td>Architecture dual-GPU sur module unique, gravure 4 nm, HBM3e jusqu’à 192 Go, NVLink 5.0 (1,8 To/s), FP8/FP4 natifs</td>
+<td>14-05-2025</td>
+<td>Veille matérielle GPU</td>
+<td>Fusion GPU via switch NVLink intégré — selon roadmap publique NVidia (2025) — source interne/industrie</td>
+</tr>
+
+<tr>
+<td>Prospective GPU – AMD Instinct MI400</td>
+<td>CDNA4, empilement 3D complet, 256 Go HBM4</td>
+<td>12-10-2026</td>
 <td>Prospective GPU</td>
-<td>Vers HBM4, FP2, interconnexions >2 To/s.</td>
+<td>GPU sur CPU (sans PCIe) envisagé — veille long terme</td>
+</tr>
+
+<tr>
+<td>Prospective GPU – NVIDIA Rubin</td>
+<td>3 nm, NVLink 6.0 >2 To/s, HBM4, FP2, refroidissement liquide intégré</td>
+<td>20-11-2026</td>
+<td>Prospective GPU</td>
+<td>Remplace Blackwell — roadmap constructeur 2026 (veille prospective)</td>
+</tr>
+
+<tr>
+<td>Prospective HPC – Intel Falcon Shores</td>
+<td>Architecture unifiée CPU+GPU, mémoire CXL universelle</td>
+<td>05-06-2026</td>
+<td>Prospective GPU / HPC</td>
+<td>Module compute universel — veille long terme</td>
+</tr>
+
+<tr>
+<td>Prospective Innovation – GPU photoniques</td>
+<td>Bus optique >10 To/s, faible chaleur, performances massives</td>
+<td>10-09-2027</td>
+<td>Prospective innovation</td>
+<td>Concept de bus optique (photoniques) — veille recherche</td>
 </tr>
 
 </tbody>
 </table>
 </div>
+
 
           
           
@@ -1602,6 +1683,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
