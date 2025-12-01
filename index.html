@@ -890,7 +890,112 @@ footer {
       <h4 class="text-center mb-3">Mes Recherches sur La Carte Graphique</h4>
       <div class="row">
 
-        <!-- Exemple PDF 1 -->
+        <style>
+.table-container {
+    width: 100%;
+    margin: 40px 0;
+    font-family: Arial, sans-serif;
+}
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.custom-table thead {
+    background: #1e3a8a;
+    color: white;
+}
+.custom-table th, .custom-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+.custom-table tbody tr:hover {
+    background: #f3f4f6;
+}
+</style>
+
+<div class="table-container">
+<h2>Veille Technologique – GPU</h2>
+<table class="custom-table">
+<thead>
+<tr>
+    <th>Outils utilisés</th>
+    <th>Description des veilles</th>
+    <th>Date</th>
+    <th>Type de veille</th>
+    <th>Note complémentaire</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>Articles techniques (NVIDIA, AMD)</td>
+<td>Évolution architectures 2024–2025 : NVIDIA Blackwell, AMD MI300X, Intel Ponte Vecchio. Nouveaux modèles multi-dies, mémoire HBM3e, interconnexion NVLink 5.0.</td>
+<td>14-10-2025</td>
+<td>Puce GPU / Architecture</td>
+<td>Dual GPU, bande passante extrême (jusqu’à 1,8 To/s).</td>
+</tr>
+
+<tr>
+<td>Rapports HPC / Data centers</td>
+<td>Innovations thermiques : refroidissement liquide direct, vapor chamber avancée, microcanaux.</td>
+<td>14-10-2025</td>
+<td>Refroidissement GPU</td>
+<td>DLC utilisé dans les supercalculateurs (Frontier, Jupiter).</td>
+</tr>
+
+<tr>
+<td>Docs NVIDIA / AMD</td>
+<td>Interconnexions ultra-rapides : NVLink 5.0, Infinity Fabric 3, CXL 3.0, PCIe Gen6.</td>
+<td>14-10-2025</td>
+<td>Bande passante / Interconnexion</td>
+<td>Vers >128 Go/s bidirectionnel d’ici 2026.</td>
+</tr>
+
+<tr>
+<td>Notes API (CUDA, Vulkan)</td>
+<td>CUDA 13 unifie CPU–GPU, HIP/SYCL deviennent multiplateforme, Vulkan 1.4 améliore le ray tracing.</td>
+<td>14-10-2025</td>
+<td>Software / API</td>
+<td>Meilleure portabilité des programmes GPU.</td>
+</tr>
+
+<tr>
+<td>Fiches firmware</td>
+<td>GPU + IA embarquée : contrôle ventilateurs prédictif, DVFS intelligent, thermal learning.</td>
+<td>14-10-2025</td>
+<td>Gestion énergétique / IA</td>
+<td>Adaptation en temps réel charge ↔ température.</td>
+</tr>
+
+<tr>
+<td>Documentation fabricants</td>
+<td>Capteurs intégrés : thermique, électrique, stress, EMI, optique interne.</td>
+<td>14-10-2025</td>
+<td>Surveillance / Capteurs</td>
+<td>Stabilité PCIe/NVLink et fiabilité améliorées.</td>
+</tr>
+
+<tr>
+<td>Roadmap GPU 2026–2027</td>
+<td>Projets futurs : NVIDIA Rubin, AMD MI400, Intel Falcon Shores, bus photonique.</td>
+<td>14-10-2025</td>
+<td>Prospective GPU</td>
+<td>Vers HBM4, FP2, interconnexions >2 To/s.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+          
+          
+          <!-- Exemple PDF 1 -->
         <div class="col-md-6 mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-body text-center">
@@ -1389,6 +1494,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
