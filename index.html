@@ -156,7 +156,6 @@ body {
 
 </style>
 
-
 </head>
 <body>
     <!-- Navigation -->
@@ -908,107 +907,76 @@ body {
       <div class="row">
 
 <!-- Tableau Veille GPU -->
-        <style>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .table-container {
     width: 100%;
     margin: 40px 0;
     font-family: 'Press Start 2P', monospace;
-    background: url('https://i.imgur.com/KUmYpZC.png');
-    background-size: cover;
+    background-color: #121212; /* Fond très sombre */
     padding: 20px;
-    border-radius: 15px;
-}
-
-/* CRT Scanline effect */
-.table-container:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.2) 3px
-    );
-    opacity: 0.6;
-    mix-blend-mode: overlay;
     border-radius: 15px;
 }
 
 .custom-table {
     width: 100%;
     border-collapse: collapse;
-    background: rgba(10, 10, 20, 0.95);
-    border: 4px solid #ff003c;
+    background: #1a1a2e; /* Bleu marine foncé */
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0 25px #ff003c, 0 0 50px #00eaff inset;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .custom-table thead {
-    background: linear-gradient(90deg, #ff003c, #ffae00);
-    color: white;
-    text-shadow: 2px 2px #000000;
+    background: #162447; /* Bleu marine plus vif */
+    color: #dcdcdc; /* Texte sobre */
     font-size: 12px;
 }
 
 .custom-table th,
 .custom-table td {
     padding: 14px 16px;
-    border-bottom: 2px solid #222;
+    border-bottom: 1px solid #333;
     text-align: left;
     vertical-align: top;
-    color: #f8f8f8;
+    color: #e0e0e0;
     font-size: 11px;
 }
 
 .custom-table tbody tr {
-    transition: 0.15s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
-/* Hover = effet “Hit spark” Street Fighter */
 .custom-table tbody tr:hover {
-    background: rgba(255, 0, 80, 0.25);
-    box-shadow: 0 0 20px #ff0055 inset, 0 0 10px #ffe100;
+    background: #1f4068; /* Bleu légèrement plus clair au hover */
     transform: scale(1.01);
 }
 
-/* Neon glow */
-.custom-table th {
-    background: #ff003c;
-    color: #fff;
-    font-size: 12px;
-    box-shadow: 0 0 12px #ff003c;
-}
-
-/* Encadrement neon des colonnes importantes */
+/* Accent sur certaines colonnes */
 .custom-table td:nth-child(1),
 .custom-table td:nth-child(3),
 .custom-table td:nth-child(4) {
-    color: #00eaff;
-    text-shadow: 0 0 5px #00eaff;
+    color: #4ecca3; /* Vert pastel pour contraste subtil */
 }
 
 /* Boutons style Arcade pour liens éventuels */
 .arcade-btn {
     display: inline-block;
     padding: 6px 10px;
-    background: #ffae00;
-    border: 3px solid #ff003c;
-    box-shadow: 0 0 10px #ff003c;
-    color: #000;
+    background: #1f4068;
+    border: 2px solid #4ecca3;
+    color: #dcdcdc;
     font-size: 10px;
     text-transform: uppercase;
     transition: 0.2s;
 }
 
 .arcade-btn:hover {
-    background: #ff003c;
-    color: white;
-    box-shadow: 0 0 15px #ff003c, 0 0 10px #ffe100 inset;
-    transform: scale(1.1);
+    background: #4ecca3;
+    color: #1a1a2e;
+    box-shadow: 0 0 8px #4ecca3, 0 0 4px #1a1a2e inset;
+    transform: scale(1.05);
 }
 </style>
 
@@ -1249,31 +1217,75 @@ body {
 <!-- Tableau Avancée Automobile -->
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .table-container {
     width: 100%;
     margin: 40px 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', monospace;
+    background-color: #121212; /* Fond très sombre */
+    padding: 20px;
+    border-radius: 15px;
 }
+
 .custom-table {
     width: 100%;
     border-collapse: collapse;
-    background: #ffffff;
+    background: #1a1a2e; /* Bleu marine foncé */
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
+
 .custom-table thead {
-    background: #065f46;
-    color: white;
+    background: #162447; /* Bleu marine plus vif */
+    color: #dcdcdc; /* Texte sobre */
+    font-size: 12px;
 }
-.custom-table th, .custom-table td {
+
+.custom-table th,
+.custom-table td {
     padding: 14px 16px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #333;
     text-align: left;
     vertical-align: top;
+    color: #e0e0e0;
+    font-size: 11px;
 }
+
+.custom-table tbody tr {
+    transition: 0.2s ease-in-out;
+}
+
 .custom-table tbody tr:hover {
-    background: #f0fdf4;
+    background: #1f4068; /* Bleu légèrement plus clair au hover */
+    transform: scale(1.01);
+}
+
+/* Accent sur certaines colonnes */
+.custom-table td:nth-child(1),
+.custom-table td:nth-child(3),
+.custom-table td:nth-child(4) {
+    color: #4ecca3; /* Vert pastel pour contraste subtil */
+}
+
+/* Boutons style Arcade pour liens éventuels */
+.arcade-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    background: #1f4068;
+    border: 2px solid #4ecca3;
+    color: #dcdcdc;
+    font-size: 10px;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.arcade-btn:hover {
+    background: #4ecca3;
+    color: #1a1a2e;
+    box-shadow: 0 0 8px #4ecca3, 0 0 4px #1a1a2e inset;
+    transform: scale(1.05);
 }
 </style>
 
@@ -1776,6 +1788,7 @@ body {
 </body>
 
 </html>
+
 
 
 
