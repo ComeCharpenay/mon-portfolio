@@ -9,137 +9,149 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* ======= PALETTE STREET FIGHTER ======= */
 :root {
-  --primary-color: #ffcc00; /* Jaune vif Street Fighter */
-  --secondary-color: #0a0a0a; /* Noir profond */
-  --accent-red: #b30000; /* Rouge agressif */
-  --light-color: #e8e8e8; /* Gris clair */
+  --primary-color: #4e6aff;       /* Bleu arcade doux */
+  --secondary-color: #0a0f1b;     /* Noir/bleu profond */
+  --accent-color: #2e1f47;        /* Violet sombre */
+  --text-color: #d2d2d2;          /* Gris clair lisible */
+  --title-color: #8aa6ff;         /* Bleu non-vif, doux */
+  --border-glow: #3f4a80;         /* Glow discret */
 }
 
-/* ======= GLOBAL ======= */
+/* ====== GENERAL ====== */
 body {
   font-family: 'Press Start 2P', monospace;
-  background-color: var(--accent-red);
-  color: var(--light-color);
-  overflow-x: hidden;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   margin: 0;
+  overflow-x: hidden;
 }
 
-/* Corrige TOUTES les sections qui devenaient blanches */
-section, div, .container, .row {
-  background: transparent !important;
-}
-
-/* ======= NAVBAR ======= */
+/* ====== NAVBAR ====== */
 .navbar {
-  background-color: #111;
-  border-bottom: 3px solid var(--primary-color);
+  background: linear-gradient(90deg, #06080f, #0f1524, #06080f);
+  border-bottom: 2px solid var(--border-glow);
   padding: 12px 0;
 }
 
 .nav-link {
-  color: var(--light-color);
-  font-size: 0.8rem; /* Réduction ici */
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: #c4c4c4;
+  font-size: 0.8rem;
+  transition: 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
-  text-shadow: 0 0 10px var(--primary-color);
+  color: var(--title-color);
+  text-shadow: 0 0 8px var(--border-glow);
 }
 
-/* ======= HERO ======= */
+/* ====== HERO ====== */
 .hero-bg {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-size: cover;
-  opacity: 0.10;
+  inset: 0;
+  background: url('https://wallpapercave.com/wp/wp2024276.jpg') center/cover;
+  opacity: 0.18;
+  z-index: -1;
 }
 
-/* TEXTE TROP GRAND → FIXÉ */
 .hero {
-  padding: 90px 20px;
+  padding: 100px 20px;
   text-align: center;
-  color: var(--primary-color);
-  font-size: 2rem; /* AVANT: 4rem → Beaucoup trop ! */
-  line-height: 2.8rem;
-  text-shadow: 0 0 15px var(--primary-color);
+  color: var(--title-color);
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  text-shadow: 0 0 10px #26305a;
 }
 
-/* ======= TITRES SECTIONS ======= */
+/* ===== TITRES ===== */
 .section-title {
-  font-size: 1.5rem; /* AVANT: 2.5rem */
+  font-size: 1.7rem;
   text-align: center;
   margin-top: 40px;
-  color: var(--primary-color);
+  color: var(--title-color);
+  text-shadow: 0 0 10px var(--border-glow);
 }
 
-/* ======= CARDS ======= */
+/* ====== CARDS ====== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+  margin: 20px;
 }
 
 .card {
-  background-color: var(--secondary-color);
+  background-color: #111522;
+  border: 2px solid #2c3454;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px var(--primary-color);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px #1b2238;
+  transition: 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #2c3454;
 }
 
-/* ======= FOOTER ======= */
+.card-title {
+  color: var(--title-color);
+  margin-bottom: 10px;
+}
+
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* ====== FOOTER ====== */
 .footer {
-  background-color: #111;
+  background-color: #0c1020;
+  border-top: 2px solid var(--border-glow);
   text-align: center;
   padding: 40px 0;
 }
 
+/* ====== BOUTON HAUT ====== */
 .scroll-to-top {
-  background-color: var(--primary-color);
-  color: #000;
-  padding: 12px;
-  border-radius: 5px;
+  background-color: #2d3b63;
+  color: #e5e5e5;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin: 20px auto;
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* ===== TEXTE PIXEL TROP GROS → Correction universelle ===== */
-p, span, li, a {
-  font-size: 0.8rem !important;
-  line-height: 1.7rem;
-}
-
-h1, h2, h3 {
-  font-size: 1.2rem !important;
+.scroll-to-top:hover {
+  background-color: #3a4c7a;
+  transform: scale(1.08);
 }
 
 /* ===== BOUTON ARCADE ===== */
 .button-arcade {
-  background-color: var(--primary-color);
-  color: black;
-  padding: 12px 20px;
+  padding: 8px 14px;
+  background-color: #2f3a56;
+  color: #dcdcdc;
+  border: 2px solid #3f4a80;
   border-radius: 5px;
   font-size: 0.9rem;
   text-transform: uppercase;
-  box-shadow: 0 0 12px var(--primary-color);
+  transition: 0.3s ease;
 }
 
 .button-arcade:hover {
-  background-color: var(--accent-red);
-  color: white;
-  transform: scale(1.05);
+  background-color: #44537d;
+  color: #fff;
 }
 
-/* === Fix pour éviter le fond blanc du body étendu === */
-html, body {
-  background: var(--accent-red) !important;
+/* ===== TITRES / TEXTES RESPONSIFS ===== */
+@media (max-width: 768px) {
+  .hero {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
 }
 
 </style>
@@ -1764,6 +1776,7 @@ html, body {
 </body>
 
 </html>
+
 
 
 
