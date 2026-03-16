@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
-  --primary-color: #4e6aff;       /* Bleu arcade doux */
-  --secondary-color: #0a0f1b;     /* Noir/bleu profond */
-  --accent-color: #2e1f47;        /* Violet sombre */
-  --text-color: #d2d2d2;          /* Gris clair lisible */
-  --title-color: #8aa6ff;         /* Bleu non-vif, doux */
-  --border-glow: #3f4a80;         /* Glow discret */
+  --primary-color: #4e6aff;
+  --secondary-color: #0a0f1b;
+  --accent-color: #2e1f47;
+  --text-color: #d2d2d2;
+  --title-color: #8aa6ff;
+  --border-glow: #3f4a80;
 }
 
 /* ====== GENERAL ====== */
@@ -61,6 +61,13 @@ body {
   font-size: 2.2rem;
   line-height: 2.6rem;
   text-shadow: 0 0 10px #26305a;
+}
+
+/* ===== IMAGE HERO (PHOTO CERCLE) ===== */
+.hero-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
 }
 
 /* ===== TITRES ===== */
@@ -145,17 +152,18 @@ body {
   background-color: #44537d;
   color: #fff;
 }
-/* ===== BOUTON ATELIER-SISR ===== */
-  .btn-violet {
-    background-color: #4B2E83;
-    color: #fff;
-    border: none;
-  }
 
-  .btn-violet:hover {
-    background-color: #3A2366;
-    color: #fff;
-  }
+/* ===== BOUTON ATELIER-SISR ===== */
+.btn-violet {
+  background-color: #4B2E83;
+  color: #fff;
+  border: none;
+}
+
+.btn-violet:hover {
+  background-color: #3A2366;
+  color: #fff;
+}
 
 /* ===== TITRES / TEXTES RESPONSIFS ===== */
 @media (max-width: 768px) {
@@ -163,8 +171,12 @@ body {
     font-size: 1.6rem;
     line-height: 2rem;
   }
-}
 
+  .hero-img {
+    width: 130px;
+    height: 130px;
+  }
+}
 </style>
 
 </head>
