@@ -172,11 +172,20 @@ body {
     line-height: 2rem;
   }
 
-  .hero-img {
-    width: 360px;
-    height: 320px;
-    object-fit: cover;
-  }
+ .hero-img {
+  width: 260px;             /* Taille plus grande */
+  height: 260px;
+  object-fit: cover;        /* Remplit le cercle sans déformation */
+  border-radius: 50%;       /* Cercle parfait */
+  border: 3px solid #3f4a80; /* Légère bordure glow */
+  box-shadow: 0 0 15px #3f4a80; /* Halo lumineux discret */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-img:hover {
+  transform: scale(1.05);        /* Effet léger au survol */
+  box-shadow: 0 0 25px #4e6aff;  /* Glow plus intense au hover */
+}
 }
 </style>
 
