@@ -2215,11 +2215,25 @@ body {
         </div>
     </div>
 
-    <div class="modal-body">
-    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="img-fluid mb-4" alt="Projet Application">
+    <!-- Modale -->
+<div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
-    <h4>Les comptes rendus en BTS SIO</h4>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Voir le projet</button>
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModal3Label">Les comptes rendus en BTS SIO</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                     class="img-fluid mb-4" alt="Projet Application">
+
+                <h4>Les comptes rendus en BTS SIO</h4>
+
     <p>
         En BTS SIO (Services Informatiques aux Organisations), les comptes rendus occupent une place importante 
         dans la formation. Ils permettent de documenter les projets réalisés, d'expliquer les choix techniques 
@@ -2252,7 +2266,15 @@ body {
         une véritable preuve du travail réalisé et participent à la construction d’un portfolio 
         professionnel.
     </p>
-</div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Fermer
+                </button>
+            </div>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
