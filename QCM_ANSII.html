@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>QCM Sécurité Migration</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#e6eef5,#cfd9e6);
+    padding:20px;
+}
+
+.container {
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align:center;
+    color:#1f4e6b;
+}
+
+.link-btn {
+    display:block;
+    text-align:center;
+    margin-bottom:20px;
+    color:white;
+    background:#1f6e8c;
+    padding:10px;
+    border-radius:20px;
+    text-decoration:none;
+}
+
+.question-text {
+    font-size:1.2rem;
+    margin-bottom:15px;
+}
+
+.words {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.word {
+    background:#eef6fb;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:grab;
+    border:1px solid #bcd6e5;
+}
+
+.dropzone {
+    margin-top:15px;
+    min-height:60px;
+    border:2px dashed #4c89a8;
+    border-radius:15px;
+    padding:10px;
+}
+
+.answer {
+    background:#d9edf7;
+    padding:6px 12px;
+    border-radius:15px;
+    display:inline-block;
+}
+
+button {
+    margin-top:10px;
+    padding:10px 20px;
+    border-radius:20px;
+    border:none;
+    cursor:pointer;
+}
+
+.check {background:#2c7da0;color:white;}
+.next {background:#2e8b57;color:white;}
+
+.feedback {margin-top:10px;}
+.correct {color:green;}
+.wrong {color:red;}
+
+.info {
+    background:#f0f7fb;
+    padding:15px;
+    border-radius:15px;
+    margin-top:15px;
+    border-left:5px solid #2c7da0;
+}
+
+#cours {
+    display:none;
+}
+
+#corrige {
+    display:none;
+    margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="quizPage">
+<h2>QCM Sécurité & Migration</h2>
+
+<a class="link-btn" href="#" onclick="showCours()">📘 Voir le résumé complet</a>
+
+<div id="quiz"></div>
+
+<button class="next" id="nextBtn" onclick="nextQuestion()" style="display:none;">Suivant</button>
+
+<div id="corrige"></div>
+</div>
+
+<div class="container" id="cours">
+<h2>Pourquoi sécuriser une migration numérique ?</h2>
+
+<a class="link-btn" href="#" onclick="backToQuiz()">⬅ Retour au QCM</a>
+
+<p>
+Lorsqu’un système d’information évolue ou change d’infrastructure, il traverse une phase critique appelée migration.
+Durant cette période, les données circulent, les services sont modifiés et certains mécanismes de sécurité peuvent être temporairement affaiblis.
+Il devient alors essentiel de garantir que les informations échangées ne puissent pas être interceptées ou altérées, notamment grâce à des mécanismes de protection comme le chiffrement.
+</p>
+
+<p>
+La continuité des services dépend également fortement de la gestion des sauvegardes. Une sauvegarde indisponible ou corrompue peut empêcher toute restauration en cas d’incident.
+C’est pourquoi il est nécessaire de maintenir les anciens systèmes le temps de garantir une transition complète et sécurisée.
+</p>
+
+<p>
+Un système fiable repose sur son intégrité : il ne doit pas avoir été modifié ou compromis. Cela implique des vérifications régulières, des analyses de sécurité et une maîtrise des accès.
+Les outils d’administration, en particulier, doivent être fortement protégés car ils permettent un contrôle global du système.
+</p>
+
+<p>
+Réduire les risques passe aussi par une limitation des surfaces d’attaque, en supprimant les services inutiles et en contrôlant les communications réseau.
+Une bonne connaissance du système, via une cartographie précise, permet d’anticiper les dépendances et les impacts potentiels.
+</p>
+
+<p>
+Enfin, la préparation est essentielle : analyser les risques, tester les procédures, surveiller les incidents et réaliser des audits après migration permet d’assurer un niveau de sécurité optimal.
+La suppression des anciens systèmes doit être réalisée avec précaution afin d’éviter toute fuite d’information.
+</p>
+
+<p>
+Dans ce contexte, il est également essentiel de distinguer deux notions importantes : le maintien en condition opérationnelle (MCO), qui garantit le bon fonctionnement des systèmes, et le maintien en condition de sécurité (MCS), qui assure leur protection face aux menaces. Ces deux aspects sont complémentaires et doivent être assurés tout au long de la migration.
+</p>
+
+<p>
+Afin de limiter les risques d’incident, il est fortement recommandé de geler les modifications durant la phase de migration. Éviter les changements imprévus permet de conserver un environnement stable et de réduire les causes potentielles de dysfonctionnement.
+</p>
+
+<p>
+La sécurité d’un système d’information repose également sur plusieurs principes fondamentaux, notamment la confidentialité, qui garantit que seules les personnes autorisées accèdent aux données, l’intégrité, qui assure que les informations ne sont pas altérées, la disponibilité, qui permet l’accès aux services en permanence, et la traçabilité, qui permet de suivre les actions effectuées sur le système.
+</p>
+
+<p>
+Il est aussi important de prévoir des stratégies adaptées en cas d’incident. Le plan de continuité d’activité (PCA) permet de maintenir les services essentiels en fonctionnement, tandis que le plan de reprise d’activité (PRA) vise à restaurer le système après une interruption.
+</p>
+
+<p>
+Lorsqu’une migration implique un prestataire externe, il est nécessaire d’évaluer son niveau de sécurité afin de s’assurer qu’il respecte les exigences attendues. Cela passe notamment par l’analyse de ses certifications et de ses engagements contractuels.
+</p>
+
+<p>
+La supervision de la sécurité peut être assurée par un centre spécialisé, chargé de surveiller en temps réel les événements et de détecter les anomalies. Cette surveillance continue permet d’identifier rapidement toute activité suspecte.
+</p>
+
+<p>
+Avant de migrer un système, il est indispensable de traiter les alertes de sécurité existantes. Migrer un système déjà compromis reviendrait à déplacer le problème vers une nouvelle infrastructure.
+</p>
+
+<p>
+Enfin, la vérification des équipements de sécurité tels que les pare-feu, les antivirus ou les solutions de détection avancée permet de garantir un niveau de protection suffisant. Ces dispositifs jouent un rôle clé dans la défense globale du système d’information.
+</p>
+
+
+</div>
+
+<script>
+
+const questions = [
+{
+q:"Pourquoi est-il essentiel de chiffrer les données lorsqu’elles transitent sur le réseau lors d’une migration de système d’information ?",
+a:"MITM",
+def:"Protection contre interception",
+tech:"TLS, VPN"
+},
+{
+q:"Pourquoi faut-il surveiller attentivement les sauvegardes durant une phase de migration numérique ?",
+a:"corruption",
+def:"Risque de perte de données",
+tech:"Tests restauration"
+},
+{
+q:"Pourquoi est-il recommandé de conserver temporairement les anciennes infrastructures après une migration ?",
+a:"sauvegardes",
+def:"Accès aux données anciennes",
+tech:"Compatibilité"
+},
+{
+q:"Qu’est-ce qui caractérise un système considéré comme fiable et digne de confiance ?",
+a:"intègre",
+def:"Non modifié",
+tech:"Hash"
+},
+{
+q:"Pourquoi les outils d’administration doivent-ils être particulièrement sécurisés ?",
+a:"contrôle",
+def:"Accès total",
+tech:"MFA"
+},
+{
+q:"Quel est l’objectif principal du hardening dans un système informatique ?",
+a:"attaque",
+def:"Réduire vulnérabilités",
+tech:"Désactivation services"
+},
+{
+q:"Pourquoi est-il important de filtrer les flux réseau dans une infrastructure ?",
+a:"non autorisées",
+def:"Contrôle trafic",
+tech:"Firewall"
+},
+{
+q:"Dans une stratégie informatique, à quoi correspond principalement le maintien en condition de sécurité (MCS) ?",
+a:"sécurité",
+def:"Protection système",
+tech:"Patchs"
+},
+{
+q:"Pourquoi est-il conseillé d’éviter les modifications pendant une migration critique ?",
+a:"incidents",
+def:"Stabilité",
+tech:"Freeze"
+},
+{
+q:"Pourquoi une cartographie du système d’information est-elle indispensable ?",
+a:"dépendances",
+def:"Compréhension SI",
+tech:"Diagrammes"
+},
+{
+q:"Pourquoi réalise-t-on une analyse de risque avant une migration ?",
+a:"menaces",
+def:"Anticipation",
+tech:"EBIOS"
+},
+{
+q:"Parmi les principes fondamentaux de sécurité, lequel garantit que seules les personnes autorisées accèdent aux données ?",
+a:"confidentialité",
+def:"Accès limité",
+tech:"Contrôle accès"
+},
+{
+q:"Quelle notion décrit la capacité d’un système à continuer de fonctionner pendant un incident ?",
+a:"continuité",
+def:"Maintien service",
+tech:"PCA"
+},
+{
+q:"Pourquoi est-il nécessaire d’évaluer un prestataire avant une migration ?",
+a:"sécurité",
+def:"Confiance",
+tech:"Audit"
+},
+{
+q:"Quel est le rôle principal d’un centre de supervision de sécurité (SOC) ?",
+a:"surveillance",
+def:"Monitoring",
+tech:"SIEM"
+},
+{
+q:"Pourquoi faut-il traiter les alertes de sécurité avant de migrer un système ?",
+a:"compromis",
+def:"Système infecté",
+tech:"Analyse"
+},
+{
+q:"Quel équipement permet principalement de contrôler et filtrer le trafic réseau ?",
+a:"pare-feu",
+def:"Protection réseau",
+tech:"Filtrage"
+},
+{
+q:"Pourquoi est-il indispensable de tester les procédures avant une migration réelle ?",
+a:"erreurs",
+def:"Prévention",
+tech:"Simulation"
+},
+{
+q:"Pourquoi réalise-t-on un audit après une migration ?",
+a:"failles",
+def:"Détection",
+tech:"Pentest"
+},
+{
+q:"Pourquoi faut-il supprimer correctement les anciens systèmes après migration ?",
+a:"fuites",
+def:"Protection données",
+tech:"Effacement sécurisé"
+}
+];
+
+const allWords = [
+"MITM","corruption","sauvegardes","intègre","contrôle","attaque",
+"non autorisées","sécurité","incidents","dépendances","menaces",
+"confidentialité","continuité","surveillance","compromis",
+"pare-feu","erreurs","failles","fuites"
+];
+
+let current=0;
+let selected="";
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
+
+function loadQuestion(){
+    const q=questions[current];
+    selected="";
+    document.getElementById("nextBtn").style.display="none";
+
+    let choices=shuffle([...allWords]).slice(0,5);
+    if(!choices.includes(q.a)) choices[0]=q.a;
+    choices=shuffle(choices);
+
+    document.getElementById("quiz").innerHTML=`
+        <div class="question-text">${current+1}. ${q.q}</div>
+        <div class="words" id="words"></div>
+        <div class="dropzone" id="drop"></div>
+        <button class="check" onclick="check()">Vérifier</button>
+        <div class="feedback" id="fb"></div>
+        <div id="info"></div>
+    `;
+
+    const wDiv=document.getElementById("words");
+
+    choices.forEach(w=>{
+        let el=document.createElement("div");
+        el.className="word";
+        el.innerText=w;
+        el.draggable=true;
+        el.ondragstart=()=>selected=w;
+        wDiv.appendChild(el);
+    });
+
+    const drop=document.getElementById("drop");
+    drop.ondragover=e=>e.preventDefault();
+    drop.ondrop=e=>{
+        e.preventDefault();
+        drop.innerHTML=`<div class="answer">${selected}</div>`;
+    };
+}
+
+function check(){
+    const ans=document.querySelector(".answer")?.innerText;
+    const q=questions[current];
+    const fb=document.getElementById("fb");
+    const info=document.getElementById("info");
+
+    if(ans===q.a){
+        fb.innerHTML="✅ Correct";
+        fb.className="feedback correct";
+
+        info.innerHTML=`
+        <div class="info">
+        <b>Définition :</b> ${q.def}<br>
+        <b>Technique :</b> ${q.tech}
+        </div>`;
+
+        document.getElementById("nextBtn").style.display="block";
+    } else {
+        fb.innerHTML="❌ Faux";
+        fb.className="feedback wrong";
+    }
+}
+
+function nextQuestion(){
+    current++;
+    if(current<questions.length){
+        loadQuestion();
+    } else {
+        showCorrige();
+    }
+}
+
+function showCorrige(){
+    let html="<h3>Corrigé :</h3>";
+    questions.forEach((q,i)=>{
+        html+=`<p>${i+1}. ${q.q}<br>✔ ${q.a}</p>`;
+    });
+
+    document.getElementById("corrige").style.display="block";
+    document.getElementById("corrige").innerHTML=html;
+}
+
+function showCours(){
+    document.getElementById("quizPage").style.display="none";
+    document.getElementById("cours").style.display="block";
+}
+
+function backToQuiz(){
+    document.getElementById("quizPage").style.display="block";
+    document.getElementById("cours").style.display="none";
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
