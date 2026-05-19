@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSB · Cahier des charges · Serveur de base dédié</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border: 1px solid #dde7f0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        /* En-tête style rapport */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b2b4f;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #0b2b4f;
+        }
+
+        .sous-titre {
+            font-size: 1rem;
+            color: #4a627a;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-titre {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0b2b4f;
+            margin-bottom: 1.2rem;
+            padding-left: 0.5rem;
+            border-left: 6px solid #3b82f6;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+        }
+        
+        .section-titre::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #3b82f6;
+            margin-top: 8px;
+        }
+
+        .sous-section {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e4a7a;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-color: #b9d4f0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .paragraphe-important {
+            background-color: #f0f7ff;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid #0b2b4f;
+            margin-bottom: 1.5rem;
+        }
+
+        .liste-numerotee {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .liste-numerotee li {
+            margin-bottom: 0.8rem;
+        }
+
+        .liste-puce {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .liste-puce li {
+            margin-bottom: 0.5rem;
+        }
+
+        .liste-points {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            list-style-type: lower-alpha;
+        }
+        
+        .liste-points li {
+            margin-bottom: 0.4rem;
+        }
+
+        .encadre {
+            background-color: #f9f9f9;
+            border: 1px solid #d1d9e6;
+            padding: 1.2rem 1.8rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .encadre-vert {
+            background-color: #f0fdf4;
+            border-left: 5px solid #059669;
+            padding: 1.2rem 1.8rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #0b2b4f;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge i {
+            margin-right: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th {
+            background-color: #0b2b4f;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #d1d9e6;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        pre {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px dashed #b0c8e0;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #d1d9e6;
+            font-size: 0.9rem;
+            color: #4a627a;
+            text-align: center;
+        }
+
+        .annexe {
+            background-color: #fafcfd;
+            padding: 1.5rem;
+            border: 1px dashed #8aa9cc;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .table-etapes {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .table-etapes th {
+            background-color: #0b2b4f;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .table-etapes td {
+            padding: 12px;
+            border: 1px solid #d1d9e6;
+            vertical-align: top;
+        }
+        
+        .table-etapes tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .numero-etape {
+            font-weight: 700;
+            color: #0b2b4f;
+            background-color: #e6f0ff;
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .point-important {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        /* Styles améliorés pour le diagramme de Gantt 8 heures */
+        .gantt-section {
+            background-color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,20,50,0.1);
+            padding: 1.8rem 1.8rem 2.2rem 1.8rem;
+            border: 1px solid #d4e2f2;
+            margin: 2rem 0 2.5rem 0;
+        }
+
+        .gantt-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .gantt-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b2b4f;
+            margin: 0;
+        }
+
+        .gantt-header i {
+            color: #3b82f6;
+            background: #e9f0fd;
+            padding: 10px;
+            border-radius: 16px;
+            font-size: 1.4rem;
+        }
+
+        .gantt-badge-heure {
+            background-color: #0b2b4f;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .note-echelle {
+            background-color: #f0f7fd;
+            border-left: 6px solid #3b82f6;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            margin-bottom: 1.8rem;
+            color: #1e293b;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .gantt-container {
+            overflow-x: auto;
+            margin: 1.5rem 0 1.8rem 0;
+            border-radius: 18px;
+            border: 1px solid #c7daf0;
+            background: #ffffff;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .gantt-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 820px;
+            font-size: 0.9rem;
+        }
+
+        .gantt-table th {
+            background: linear-gradient(145deg, #0b2b4f, #123b66);
+            color: white;
+            font-weight: 600;
+            padding: 16px 6px;
+            font-size: 0.9rem;
+            text-align: center;
+            border-right: 1px solid #2d5075;
+            letter-spacing: 0.3px;
+        }
+
+        .gantt-table th:last-child {
+            border-right: none;
+        }
+
+        .gantt-table td {
+            padding: 10px 4px;
+            border-bottom: 1px solid #e2ebf5;
+            border-right: 1px solid #e2ebf5;
+            vertical-align: middle;
+            height: 58px;
+        }
+
+        .gantt-table td:first-child {
+            font-weight: 600;
+            color: #0b2b4f;
+            background-color: #f8fcff;
+            padding-left: 16px;
+            padding-right: 16px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            border-right: 2px solid #c7daf0;
+        }
+
+        .gantt-table td:last-child {
+            border-right: none;
+        }
+
+        .heure-indicator {
+            display: block;
+            background-color: #eef4fa;
+            color: #0b2b4f;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 4px 0;
+            font-size: 0.8rem;
+            text-align: center;
+            margin: 0 4px;
+            border: 1px solid #bdd1e8;
+        }
+
+        .gantt-bar {
+            display: block;
+            height: 32px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding-left: 10px;
+            padding-right: 8px;
+            line-height: 32px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 95%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.15s ease;
+            letter-spacing: 0.2px;
+        }
+
+        .gantt-bar:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            cursor: default;
+        }
+
+        /* Couleurs des barres */
+        .gantt-bar.etude { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+        .gantt-bar.install { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+        .gantt-bar.test { background: linear-gradient(135deg, #b45309, #d97706); }
+        .gantt-bar.select { background: linear-gradient(135deg, #7e22ce, #a855f7); }
+        .gantt-bar.doc { background: linear-gradient(135deg, #0369a1, #0284c7); }
+        .gantt-bar.reseau { background: linear-gradient(135deg, #6b21a5, #9333ea); }
+        .gantt-bar.save { background: linear-gradient(135deg, #b91c1c, #dc2626); }
+        .gantt-bar.restore { background: linear-gradient(135deg, #a16207, #ca8a04); }
+        .gantt-bar.rapport { background: linear-gradient(135deg, #0f766e, #0d9488); }
+        .gantt-bar.recette { background: linear-gradient(135deg, #1e40af, #2563eb); }
+        .gantt-bar.livraison { background: linear-gradient(135deg, #065f46, #059669); }
+
+        .legende-gantt {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 25px;
+            background: linear-gradient(145deg, #f5faff, #ecf3fd);
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            margin: 1.5rem 0 0.5rem 0;
+            border: 1px solid #bed6f0;
+            align-items: center;
+        }
+
+        .legende-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .couleur-sample {
+            width: 22px;
+            height: 22px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer-gantt {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #2c4c73;
+            background-color: #fafdff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            border: 1px dashed #a0c0e0;
+        }
+
+        .point-info {
+            background-color: #e6f0ff;
+            border-radius: 20px;
+            padding: 0.3rem 1.2rem;
+            font-weight: 500;
+        }
+
+        td[colspan] {
+            padding: 0 6px;
+        }
+
+        .centre-cell {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- En-tête -->
+    <h1>Mise en place d'un serveur de base de données dédié</h1>
+    <div class="sous-titre">Laboratoire GSB – Infrastructure et systèmes d'information</div>
+
+    <!-- 1. GLOSSAIRE -->
+    <div class="section">
+        <div class="section-titre">1. Glossaire</div>
+        <p>Le présent glossaire explicite les principaux termes techniques employés dans ce document :</p>
+        <table>
+            <tr>
+                <td><strong>SGBD</strong></td>
+                <td>Système de Gestion de Base de Données – logiciel assurant le stockage, l'organisation et la manipulation des données (MySQL, PostgreSQL, etc.)</td>
+            </tr>
+            <tr>
+                <td><strong>RPO</strong></td>
+                <td>Recovery Point Objective – volume de données acceptablement perdues exprimé en unité de temps (exemple : 15 minutes)</td>
+            </tr>
+            <tr>
+                <td><strong>RTO</strong></td>
+                <td>Recovery Time Objective – délai maximal imparti pour la restauration complète du système après sinistre</td>
+            </tr>
+            <tr>
+                <td><strong>PITR</strong></td>
+                <td>Point In Time Recovery – capacité à restaurer une base de données à un instant précis (antérieur à une altération accidentelle)</td>
+            </tr>
+            <tr>
+                <td><strong>GSB</strong></td>
+                <td>Laboratoire pharmaceutique constituant le cadre de ce projet</td>
+            </tr>
+            <tr>
+                <td><strong>Wamp</strong></td>
+                <td>Acronyme de Windows + Apache + MySQL + PHP – environnement intégré facilitant le déploiement d'un serveur web sous Windows</td>
+            </tr>
+            <tr>
+                <td><strong>pgAdmin</strong></td>
+                <td>Interface graphique dédiée à l'administration de PostgreSQL</td>
+            </tr>
+            <tr>
+                <td><strong>phpPgAdmin</strong></td>
+                <td>Interface web pour l'administration de PostgreSQL développée en PHP</td>
+            </tr>
+            <tr>
+                <td><strong>vcredist</strong></td>
+                <td>Bibliothèques Visual C++ Redistributable, prérequis pour certaines applications sous Windows</td>
+            </tr>
+            <tr>
+                <td><strong>Diagramme de Gantt</strong></td>
+                <td>Outil de planification représentant graphiquement l'échelonnement des tâches d'un projet dans le temps</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 2. Contexte -->
+    <div class="section">
+        <div class="section-titre">2. Contexte du projet</div>
+        <p>L'infrastructure actuelle du laboratoire GSB repose sur un serveur mutualisé assurant simultanément les fonctions de serveur web, serveur FTP et hébergement de la base de données MySQL. Cette configuration, bien qu'adaptée à la phase de développement, présente des limites en termes de performances, de sécurité et de granularité de la gestion des accès. Afin de professionnaliser le système d'information et d'optimiser la gestion des données, il est impératif de dissocier la couche données de la couche applicative en dédiant un serveur spécifique au SGBD.</p>
+    </div>
+
+    <!-- 3. Objectif -->
+    <div class="section">
+        <div class="section-titre">3. Objectif général</div>
+        <div class="paragraphe-important">
+            <p><strong>Objectif :</strong> Déployer un Système de Gestion de Base de Données (SGBD) sur un serveur autonome afin de centraliser, sécuriser et administrer efficacement les données de l'application. Cette nouvelle infrastructure se substituera à la solution MySQL actuellement intégrée au serveur web.</p>
+        </div>
+    </div>
+
+    <!-- 4. Questions de cadrage -->
+    <div class="section">
+        <div class="section-titre">4. Questions préliminaires</div>
+        <p>Préalablement à toute réalisation technique, les interrogations suivantes doivent être élucidées avec l'équipe projet car leurs réponses orienteront les choix architecturaux :</p>
+        
+        <div class="encadre">
+            <p><span class="badge"><i class="fas fa-database"></i> Question 1</span> <strong>Quel volume de données est anticipé à court et moyen terme ?</strong> (estimation en Go/To, taux de croissance annuel)</p>
+            
+            <p><span class="badge"><i class="fas fa-users"></i> Question 2</span> <strong>Quel nombre d'utilisateurs simultanés est prévisible ?</strong> (connexions concurrentes, pics d'activité)</p>
+            
+            <p><span class="badge"><i class="fas fa-shield-alt"></i> Question 3</span> <strong>Des données sensibles ou à caractère personnel (RGPD) sont-elles concernées ?</strong> (implications en matière de chiffrement et de traçabilité)</p>
+            
+            <p><span class="badge"><i class="fas fa-clock"></i> Question 4</span> <strong>Quelles sont les plages horaires d'utilisation critique de l'application ?</strong> (permettra de définir les fenêtres de maintenance)</p>
+            
+            <p><span class="badge"><i class="fas fa-life-ring"></i> Question 5</span> <strong>Quelle politique de sauvegarde doit être mise en œuvre ?</strong> (fréquence, types de sauvegarde, durée de rétention, exigences de chiffrement, stockage local/distant)</p>
+            
+            <p><span class="badge"><i class="fas fa-network-wired"></i> Question 6</span> <strong>Une authentification via l'annuaire d'entreprise (LDAP/Active Directory) est-elle requise ?</strong></p>
+            
+            <p><span class="badge"><i class="fas fa-chart-line"></i> Question 7</span> <strong>Quels sont les objectifs de reprise après sinistre (RPO et RTO) ?</strong> (tolérance à la perte de données et délai de restauration maximal)</p>
+            
+            <p><span class="badge" style="background-color: #059669;"><i class="fas fa-chart-gantt"></i> Question 8</span> <strong>Quel échéancier prévisionnel est envisagé pour ce projet ?</strong> La réalisation d'un diagramme de Gantt permettra de visualiser la séquence des opérations.</p>
+        </div>
+        <div class="point-important">
+            <i class="fas fa-pencil-alt"></i> <strong>Travail préparatoire :</strong> En concertation avec l'équipe, documenter les réponses à ces questions. Ces informations constitueront le socle des décisions techniques ultérieures.
+        </div>
+    </div>
+
+    <!-- 5. Environnement technique -->
+    <div class="section">
+        <div class="section-titre">5. Spécifications de l'environnement cible</div>
+        <ul class="liste-puce">
+            <li><strong>Système d'exploitation :</strong> Windows 10 Professionnel ou Windows Server (version recommandée)</li>
+            <li><strong>Mémoire vive (RAM) :</strong> 4 Go minimum (dimensionnement à adapter selon le volume de données)</li>
+            <li><strong>Processeur (CPU) :</strong> 2 cœurs minimum</li>
+            <li><strong>Capacité de stockage :</strong> 50 Go alloués à l'installation et aux données (prévoir une marge d'expansion)</li>
+            <li><strong>SGBD retenu :</strong> PostgreSQL (version 15 LTS ou ultérieure)</li>
+            <li><strong>Outils d'administration :</strong> pgAdmin (interface graphique) et phpPgAdmin (interface web)</li>
+            <li><strong>Environnement d'exécution :</strong> WampServer pour les composants PHP/Apache nécessaires à phpPgAdmin</li>
+            <li><strong>Configuration réseau :</strong> Ouverture du port 5432 (PostgreSQL) pour les connexions distantes après durcissement des règles de filtrage</li>
+        </ul>
+    </div>
+
+    <!-- 6. Travaux à réaliser -->
+    <div class="section">
+        <div class="section-titre">6. Périmètre des réalisations (livrables)</div>
+        <p>L'ensemble des productions décrites ci-après devra être rassemblé dans un rapport d'activité consolidé, lequel sera versé au portfolio.</p>
+
+        <!-- 6.1 Diagramme de Gantt - VERSION AMÉLIORÉE 8 HEURES -->
+        <div class="gantt-section">
+            <div class="gantt-header">
+                <i class="fas fa-chart-gantt"></i>
+                <h3>6.1. Diagramme de Gantt du projet (échelle 8 heures)</h3>
+                <span class="gantt-badge-heure"><i class="far fa-clock"></i> H1 → H8 · 8 heures op.</span>
+            </div>
+            
+            <div class="note-echelle">
+                <i class="fas fa-hourglass-half" style="color: #2563eb;"></i>
+                <span><strong>Planning concentré sur une journée de 8 heures</strong> – chaque créneau horaire (H1 à H8) représente une plage d'une heure. Les barres colorées indiquent la période d'exécution de chaque tâche.</span>
+            </div>
+            
+            <!-- Tableau Gantt 8 heures -->
+            <div class="gantt-container">
+                <table class="gantt-table">
+                    <thead>
+                        <tr>
+                            <th>Tâches</th>
+                            <th><span class="heure-indicator">H1<br><small>08h-09h</small></span></th>
+                            <th><span class="heure-indicator">H2<br><small>09h-10h</small></span></th>
+                            <th><span class="heure-indicator">H3<br><small>10h-11h</small></span></th>
+                            <th><span class="heure-indicator">H4<br><small>11h-12h</small></span></th>
+                            <th><span class="heure-indicator">H5<br><small>12h-13h</small></span></th>
+                            <th><span class="heure-indicator">H6<br><small>13h-14h</small></span></th>
+                            <th><span class="heure-indicator">H7<br><small>14h-15h</small></span></th>
+                            <th><span class="heure-indicator">H8<br><small>15h-16h</small></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Étude comparative -->
+                        <tr>
+                            <td><i class="fas fa-search" style="color: #2563eb; margin-right: 8px;"></i> Étude comparative</td>
+                            <td colspan="2" class="centre-cell"><span class="gantt-bar etude" title="Étude comparative (H1-H2)"><i class="fas fa-chart-simple" style="margin-right: 4px;"></i> étude</span></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- Installation PostgreSQL -->
+                        <tr>
+                            <td><i class="fas fa-download" style="color: #0d9488; margin-right: 8px;"></i> Installation PostgreSQL</td>
+                            <td></td>
+                            <td colspan="2" class="centre-cell"><span class="gantt-bar install" title="Installation PostgreSQL (H2-H3)"><i class="fas fa-database" style="margin-right: 4px;"></i> postgres</span></td>
+                            <td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- Tests de connectivité -->
+                        <tr>
+                            <td><i class="fas fa-network-wired" style="color: #b45309; margin-right: 8px;"></i> Tests de connectivité</td>
+                            <td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar test" title="Tests connectivité (H3)"><i class="fas fa-plug" style="margin-right: 4px;"></i> ping</span></td>
+                            <td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- Validation SELECT -->
+                        <tr>
+                            <td><i class="fas fa-table" style="color: #7e22ce; margin-right: 8px;"></i> Validation SELECT</td>
+                            <td></td><td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar select" title="Validation SELECT (H4)"><i class="fas fa-code" style="margin-right: 4px;"></i> SELECT</span></td>
+                            <td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- Rédaction documentation -->
+                        <tr>
+                            <td><i class="fas fa-pen" style="color: #0369a1; margin-right: 8px;"></i> Rédaction documentation</td>
+                            <td></td><td></td><td></td><td></td>
+                            <td colspan="2" class="centre-cell"><span class="gantt-bar doc" title="Rédaction doc (H5-H6)"><i class="fas fa-file-lines" style="margin-right: 4px;"></i> doc</span></td>
+                            <td></td><td></td>
+                        </tr>
+                        <!-- Actualisation schéma réseau -->
+                        <tr>
+                            <td><i class="fas fa-project-diagram" style="color: #6b21a5; margin-right: 8px;"></i> Actualisation schéma réseau</td>
+                            <td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar reseau" title="Schéma réseau (H6)"><i class="fas fa-sitemap" style="margin-right: 4px;"></i> schéma</span></td>
+                            <td></td><td></td>
+                        </tr>
+                        <!-- Mise en place sauvegarde -->
+                        <tr>
+                            <td><i class="fas fa-database" style="color: #b91c1c; margin-right: 8px;"></i> Mise en place sauvegarde</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="2" class="centre-cell"><span class="gantt-bar save" title="Sauvegarde (H7-H8)"><i class="fas fa-save" style="margin-right: 4px;"></i> backup</span></td>
+                        </tr>
+                        <!-- Tests de restauration -->
+                        <tr>
+                            <td><i class="fas fa-undo-alt" style="color: #a16207; margin-right: 8px;"></i> Tests de restauration</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar restore" title="Test restore (H8)"><i class="fas fa-rotate-left" style="margin-right: 4px;"></i> restore</span></td>
+                        </tr>
+                        <!-- Finalisation rapport activité -->
+                        <tr>
+                            <td><i class="fas fa-file-alt" style="color: #0f766e; margin-right: 8px;"></i> Finalisation rapport activité</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar rapport" title="Finalisation rapport (H8)"><i class="fas fa-check-double" style="margin-right: 4px;"></i> rapport</span></td>
+                        </tr>
+                        <!-- Période de recette -->
+                        <tr>
+                            <td><i class="fas fa-clipboard-check" style="color: #1e40af; margin-right: 8px;"></i> Période de recette</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="2" class="centre-cell"><span class="gantt-bar recette" title="Recette (H7-H8)"><i class="fas fa-check-circle" style="margin-right: 4px;"></i> recette</span></td>
+                        </tr>
+                        <!-- Livraison finale -->
+                        <tr>
+                            <td><i class="fas fa-truck" style="color: #065f46; margin-right: 8px;"></i> Livraison finale</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" class="centre-cell"><span class="gantt-bar livraison" title="Livraison (H8)"><i class="fas fa-rocket" style="margin-right: 4px;"></i> go</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Légende graphique -->
+            <div class="legende-gantt">
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #2563eb, #3b82f6);"></span> Étude</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #0d9488, #14b8a6);"></span> Installation</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #b45309, #d97706);"></span> Connectivité</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #7e22ce, #a855f7);"></span> SELECT</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #0369a1, #0284c7);"></span> Documentation</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #6b21a5, #9333ea);"></span> Réseau</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #b91c1c, #dc2626);"></span> Sauvegarde</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #a16207, #ca8a04);"></span> Restauration</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #0f766e, #0d9488);"></span> Rapport</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #1e40af, #2563eb);"></span> Recette</span>
+                <span class="legende-item"><span class="couleur-sample" style="background: linear-gradient(135deg, #065f46, #059669);"></span> Livraison</span>
+            </div>
+            
+            <!-- Footer Gantt -->
+            <div class="footer-gantt">
+                <span><i class="fas fa-hourglass-start" style="color: #0b2b4f;"></i> Début: H1 (08h00)</span>
+                <span class="point-info"><i class="fas fa-info-circle"></i> 1 créneau horaire = 1 heure · Les barres couvrent la durée estimée</span>
+                <span><i class="fas fa-flag-checkered" style="color: #059669;"></i> Fin: H8 (16h00)</span>
+            </div>
+        </div>
+
+        <!-- 6.2 Étude comparative -->
+        <div class="sous-section">6.2. Étude comparative des solutions SGBD</div>
+        <p><strong>Objet :</strong> Procéder à une analyse comparative des principaux SGBD du marché (MySQL, MariaDB, PostgreSQL, Microsoft SQL Server).</p>
+        <p><strong>Critères d'évaluation :</strong> gratuité, performances, sécurité, maturité, communauté, adéquation avec les besoins exprimés.</p>
+        <p><strong>Livrable attendu :</strong> Un tableau synoptique présentant les forces et faiblesses de chaque solution.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Le tableau doit couvrir au minimum quatre SGBD</li>
+                <li>Le critère de gratuité/licence doit être explicitement renseigné</li>
+                <li>Une synthèse argumentée doit justifier le choix de PostgreSQL</li>
+            </ol>
+        </div>
+
+        <!-- 6.3 Implémentation PostgreSQL -->
+        <div class="sous-section">6.3. Installation et configuration de PostgreSQL</div>
+        <p><strong>Objet :</strong> Procéder à l'installation de PostgreSQL sur un environnement Windows et documenter la procédure.</p>
+        <p><strong>Livrable attendu :</strong> Un tutoriel détaillé, illustré de captures d'écran, décrivant chaque étape de l'installation et de la configuration post-installation.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Le serveur PostgreSQL doit être opérationnel et accessible en local</li>
+                <li>La connexion via pgAdmin doit être fonctionnelle</li>
+                <li>phpPgAdmin doit être accessible à l'adresse http://localhost/phppgadmin</li>
+                <li>La procédure documentée doit être reproductible par un tiers</li>
+            </ol>
+        </div>
+
+        <!-- 6.4 Gestion des habilitations -->
+        <div class="sous-section">6.4. Gestion des utilisateurs et tests de connexion</div>
+        <p><strong>Objet :</strong> Créer des comptes utilisateurs avec différents niveaux de privilèges et valider le mécanisme d'authentification.</p>
+        <p><strong>Livrable attendu :</strong> Un rapport récapitulant les utilisateurs créés, leurs droits associés et les résultats des tests de connexion.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Au moins deux profils utilisateur doivent être créés avec des privilèges différenciés</li>
+                <li>La validation doit inclure des tentatives d'accès non autorisées</li>
+                <li>Les commandes SQL ou manipulations effectuées doivent être explicitées</li>
+            </ol>
+        </div>
+
+        <!-- 6.5 Validation SELECT -->
+        <div class="sous-section">6.5. Validation par requête SELECT</div>
+        <p><strong>Objet :</strong> Créer une base de données test, y insérer des données et exécuter une requête d'interrogation.</p>
+        <p><strong>Livrable attendu :</strong> La requête SQL utilisée et la capture du jeu de résultats obtenu.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Une table contenant au moins trois enregistrements doit être créée</li>
+                <li>La requête SELECT doit restituer l'intégralité ou une partie de ces données</li>
+                <li>Une capture d'écran attestera du résultat obtenu</li>
+            </ol>
+        </div>
+
+        <!-- 6.6 Documentation -->
+        <div class="sous-section">6.6. Documentation à destination des utilisateurs</div>
+        <p><strong>Objet :</strong> Rédiger un guide d'utilisation à l'intention des personnes amenées à interagir avec la base de données.</p>
+        <p><strong>Livrable attendu :</strong> Un document (format PDF ou Word) expliquant la procédure de connexion et les opérations élémentaires.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Le guide doit décrire l'installation d'un client adapté (pgAdmin, DBeaver)</li>
+                <li>La procédure d'authentification (identifiants, paramètres de connexion) doit être explicitée</li>
+                <li>Le vocabulaire employé doit être accessible à un public non technique</li>
+            </ol>
+        </div>
+
+        <!-- 6.7 Schéma réseau -->
+        <div class="sous-section">6.7. Actualisation du schéma réseau</div>
+        <p><strong>Objet :</strong> Mettre à jour la cartographie du réseau pour y intégrer le nouveau serveur de base de données.</p>
+        <p><strong>Livrable attendu :</strong> Un schéma (format électronique ou papier) représentant l'architecture cible et les flux entre équipements.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Le serveur web, le serveur FTP et le nouveau serveur de base doivent figurer distinctement</li>
+                <li>Les interactions entre ces composants doivent être matérialisées et légendées</li>
+                <li>La localisation des sauvegardes doit être indiquée</li>
+            </ol>
+        </div>
+
+        <!-- 6.8 Sauvegarde -->
+        <div class="sous-section" style="color: #b91c1c;">6.8. Mise en place de la stratégie de sauvegarde</div>
+        <p><strong>Objet :</strong> Implémenter une solution de sauvegarde conforme aux exigences définies en réponse à la question 5 du cadrage.</p>
+        <p><strong>Orientations :</strong></p>
+        <ul class="liste-puce">
+            <li>Sélectionner l'outil adapté (pg_dump, pg_basebackup, script personnalisé, solution tierce)</li>
+            <li>Développer les scripts nécessaires à l'exécution des sauvegardes</li>
+            <li>Définir la fréquence et les modalités d'exécution (déclenchement manuel ou planifié)</li>
+            <li>Prévoir une redondance des sauvegardes (support local et distant)</li>
+            <li>Réaliser et documenter des tests de restauration probants</li>
+        </ul>
+        <p><strong>Livrable attendu :</strong> Les scripts développés, les instructions de configuration et un procès-verbal des tests de restauration.</p>
+        <div class="encadre-vert">
+            <i class="fas fa-check-circle" style="color: #059669;"></i> <strong>Points à traiter :</strong>
+            <ol class="liste-points">
+                <li>Un ou plusieurs scripts de sauvegarde opérationnels doivent être fournis et commentés</li>
+                <li>La procédure de déclenchement (manuel ou automatisé) doit être clairement documentée</li>
+                <li>Un test de restauration complet doit avoir été exécuté avec succès</li>
+                <li>Une procédure de restauration détaillée doit être rédigée</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 7. Tableau récapitulatif des livrables -->
+    <div class="section">
+        <div class="section-titre">7. Synthèse des livrables</div>
+        <p>Ce tableau récapitule l'ensemble des productions attendues et permet le suivi de leur réalisation.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Référence</th>
+                    <th>Intitulé du livrable</th>
+                    <th>Réalisé</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>6.1</td><td>Diagramme de Gantt du projet (8h)</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.2</td><td>Tableau comparatif des SGBD</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.3</td><td>Tutoriel d'installation de PostgreSQL</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.4</td><td>Rapport de tests de connexion et habilitations</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.5</td><td>Requête SELECT et résultats associés</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.6</td><td>Documentation utilisateur</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.7</td><td>Schéma réseau actualisé</td><td style="text-align: center;">☐</td></tr>
+                <tr><td>6.8</td><td>Scripts de sauvegarde et PV de tests de restauration</td><td style="text-align: center;">☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 8. Modalités de restitution -->
+    <div class="section">
+        <div class="section-titre">8. Modalités de restitution</div>
+        <div class="encadre">
+            <p><i class="fas fa-folder-open" style="color: #0b2b4f;"></i> L'intégralité des livrables (diagramme de Gantt, étude comparative, tutoriel, rapports de tests, documentation, schéma réseau, scripts de sauvegarde et comptes rendus de restauration) devra être consolidée au sein d'un <strong>rapport d'activité</strong> unique, structuré et paginé, qui sera déposé dans le portfolio.</p>
+        </div>
+    </div>
+
+    <!-- 9. Annexe 1 – Modèle de compte rendu de restauration -->
+    <div class="annexe">
+        <div class="section-titre">9. Annexe 1 – Modèle de procès-verbal de restauration</div>
+        <p>Un document type est proposé pour la formalisation des tests de restauration :</p>
+        <pre style="background-color: #f1f5f9; color: #1e293b;">
+PROCÈS-VERBAL DE TEST DE RESTAURATION N°____
+Date de l'opération : ___/___/_____
+Opérateur : ____________________
+
+Nature du test : □ Complète □ Ponctuelle (PITR) □ Vérification d'intégrité
+Base de données concernée : ____________________
+Volume de données restauré : _____ Mo/Go
+Durée de l'opération : _____ minutes
+
+Issue du test : □ Succès □ Succès partiel □ Échec
+
+Observations éventuelles :
+_______________________________________________
+_______________________________________________
+
+Visa de l'opérateur : ____________________
+        </pre>
+    </div>
+
+    <!-- 10. Annexe 2 – Séquence d'installation de PostgreSQL -->
+    <div class="annexe">
+        <div class="section-titre">10. Annexe 2 – Séquence indicative d'installation de PostgreSQL</div>
+        
+        <p>Les étapes ci-dessous constituent une trame pour l'installation. Le livrable 6.3 devra les expliciter et les enrichir de copies d'écran.</p>
+        
+        <table class="table-etapes">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Étape</th>
+                    <th>Description succincte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="numero-etape">1</span></td><td><strong>Présentation</strong></td><td>Justifier le choix de PostgreSQL au regard de l'étude comparative</td></tr>
+                <tr><td><span class="numero-etape">2</span></td><td><strong>Téléchargement</strong></td><td>Obtenir la version appropriée depuis le site officiel (postgresql.org)</td></tr>
+                <tr><td><span class="numero-etape">3</span></td><td><strong>Exécution de l'installateur</strong></td><td>Sélectionner les composants, définir le mot de passe du superutilateur et le port d'écoute</td></tr>
+                <tr><td><span class="numero-etape">4</span></td><td><strong>Relevé d'identification</strong></td><td>Noter soigneusement l'utilisateur "postgres" et son mot de passe</td></tr>
+                <tr><td><span class="numero-etape">5</span></td><td><strong>Installation des prérequis</strong></td><td>Vérifier la présence des bibliothèques Visual C++ Redistributable</td></tr>
+                <tr><td><span class="numero-etape">6</span></td><td><strong>Déploiement de Wamp</strong></td><td>Installer WampServer pour disposer de l'environnement PHP/Apache</td></tr>
+                <tr><td><span class="numero-etape">7</span></td><td><strong>Acquisition de phpPgAdmin</strong></td><td>Télécharger l'archive de phpPgAdmin</td></tr>
+                <tr><td><span class="numero-etape">8</span></td><td><strong>Déploiement de phpPgAdmin</strong></td><td>Extraire et copier le contenu dans le répertoire "www" de Wamp</td></tr>
+                <tr><td><span class="numero-etape">9</span></td><td><strong>Paramétrage</strong></td><td>Adapter le fichier config.inc.php pour autoriser les connexions locales</td></tr>
+                <tr><td><span class="numero-etape">10</span></td><td><strong>Validation locale</strong></td><td>Accéder à http://localhost/phppgadmin et s'authentifier</td></tr>
+                <tr><td><span class="numero-etape">11</span></td><td><strong>Création d'utilisateurs</strong></td><td>Générer de nouveaux rôles avec des privilèges spécifiques</td></tr>
+                <tr><td><span class="numero-etape">12</span></td><td><strong>Initialisation d'une base test</strong></td><td>Créer une base et une table élémentaire (exemple : "produits")</td></tr>
+                <tr><td><span class="numero-etape">13</span></td><td><strong>Test d'authentification</strong></td><td>Vérifier la connexion avec un compte non privilégié</td></tr>
+                <tr><td><span class="numero-etape">14</span></td><td><strong>Développement d'un script PHP</strong></td><td>Réaliser un script interrogeant la table via pg_connect()</td></tr>
+                <tr><td><span class="numero-etape">15</span></td><td><strong>Test d'accès distant</strong></td><td>Configurer pg_hba.conf et tester la connexion depuis un poste du réseau</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Cahier des charges – Version 6.1 – Laboratoire GSB – Mars 2026</p>
+        <p><i class="fas fa-database"></i> Serveur dédié SGBD · PostgreSQL · Planification 8 heures · Sauvegarde</p>
+    </div>
+</div>
+</body>
+</html>
